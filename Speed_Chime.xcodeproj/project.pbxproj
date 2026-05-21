@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B02239752FBF9979009F91E7 /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = B02239742FBF9979009F91E7 /* MapboxDirections */; };
+		B02239772FBF9979009F91E7 /* MapboxNavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = B02239762FBF9979009F91E7 /* MapboxNavigationCore */; };
+		B02239792FBF9979009F91E7 /* MapboxNavigationUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02239782FBF9979009F91E7 /* MapboxNavigationUIKit */; };
+		B022397B2FBF9979009F91E7 /* _MapboxNavigationLocalization in Frameworks */ = {isa = PBXBuildFile; productRef = B022397A2FBF9979009F91E7 /* _MapboxNavigationLocalization */; };
+		B022397D2FBF9979009F91E7 /* _MapboxNavigationTestKit in Frameworks */ = {isa = PBXBuildFile; productRef = B022397C2FBF9979009F91E7 /* _MapboxNavigationTestKit */; };
+		B022397F2FBF9979009F91E7 /* mapbox-directions-swift in Frameworks */ = {isa = PBXBuildFile; productRef = B022397E2FBF9979009F91E7 /* mapbox-directions-swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B088A83C2FBF797200501D6A /* Speed_Chime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speed_Chime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,16 +32,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B022397B2FBF9979009F91E7 /* _MapboxNavigationLocalization in Frameworks */,
+				B02239792FBF9979009F91E7 /* MapboxNavigationUIKit in Frameworks */,
+				B02239772FBF9979009F91E7 /* MapboxNavigationCore in Frameworks */,
+				B02239752FBF9979009F91E7 /* MapboxDirections in Frameworks */,
+				B022397D2FBF9979009F91E7 /* _MapboxNavigationTestKit in Frameworks */,
+				B022397F2FBF9979009F91E7 /* mapbox-directions-swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B02239802FBF9A12009F91E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B088A8332FBF797200501D6A = {
 			isa = PBXGroup;
 			children = (
 				B088A83E2FBF797200501D6A /* Speed_Chime */,
+				B02239802FBF9A12009F91E7 /* Frameworks */,
 				B088A83D2FBF797200501D6A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +88,12 @@
 			);
 			name = Speed_Chime;
 			packageProductDependencies = (
+				B02239742FBF9979009F91E7 /* MapboxDirections */,
+				B02239762FBF9979009F91E7 /* MapboxNavigationCore */,
+				B02239782FBF9979009F91E7 /* MapboxNavigationUIKit */,
+				B022397A2FBF9979009F91E7 /* _MapboxNavigationLocalization */,
+				B022397C2FBF9979009F91E7 /* _MapboxNavigationTestKit */,
+				B022397E2FBF9979009F91E7 /* mapbox-directions-swift */,
 			);
 			productName = Speed_Chime;
 			productReference = B088A83C2FBF797200501D6A /* Speed_Chime.app */;
@@ -94,6 +123,9 @@
 			);
 			mainGroup = B088A8332FBF797200501D6A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B088A83D2FBF797200501D6A /* Products */;
 			projectDirPath = "";
@@ -344,6 +376,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-navigation-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.24.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B02239742FBF9979009F91E7 /* MapboxDirections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxDirections;
+		};
+		B02239762FBF9979009F91E7 /* MapboxNavigationCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxNavigationCore;
+		};
+		B02239782FBF9979009F91E7 /* MapboxNavigationUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxNavigationUIKit;
+		};
+		B022397A2FBF9979009F91E7 /* _MapboxNavigationLocalization */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = _MapboxNavigationLocalization;
+		};
+		B022397C2FBF9979009F91E7 /* _MapboxNavigationTestKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = _MapboxNavigationTestKit;
+		};
+		B022397E2FBF9979009F91E7 /* mapbox-directions-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = "mapbox-directions-swift";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B088A8342FBF797200501D6A /* Project object */;
 }
