@@ -3,18 +3,30 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var locationManager = LocationManager()
     @StateObject private var speedManager = SpeedLimitManager()
+    @StateObject private var activityManager = ActivityDetectionManager()
     
-    // This state controls whether the app is actively working
     @State private var isTracking: Bool = false
 
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 30) {
             Text("Speed_Chime")
                 .font(.largeTitle)
                 .bold()
                 .padding(.top, 20)
             
-            // Current Speed Display (Driven by GPX Simulator)
+            // Motion Activity Display
+            HStack {
+                Text("Detected Activity:")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                Text(activityManager.currentActivity)
+                    .font(.subheadline)
+                    .bold()
+                    .foregroundColor(.purple)
+            }
+            .padding(.top, -10)
+            
+            // Current Speed Display
             VStack {
                 Text("Current Speed")
                     .font(.headline)
@@ -29,7 +41,6 @@ struct ContentView: View {
                 Text("Speed Limit")
                     .font(.headline)
                     .foregroundColor(.gray)
-                // Show dashes if tracking is stopped
                 Text(isTracking ? "\(speedManager.currentSpeedLimit) mph" : "-- mph")
                     .font(.system(size: 70, weight: .black))
                     .foregroundColor(isTracking ? .red : .gray)
@@ -39,18 +50,17 @@ struct ContentView: View {
             
             // The Start/Stop Manual Override Button
             Button(action: {
-                // Toggle the tracking state
                 isTracking.toggle()
                 
-                // Trigger the logic based on the new state
                 if isTracking {
-                    speedManager.startTracking()
+                    speedManager.resetManualOverride()
+                    speedManager.startTracking(isAuto: false)
                 } else {
-                    speedManager.stopTracking()
+                    speedManager.stopTracking(isManual: true)
                 }
             }) {
-                Text(isTracking ? "Stop Tracking" : "Start Tracking")
-                    .font(.title)
+                Text(isTracking ? "Stop Tracking" : "Force Start Tracking")
+                    .font(.title2)
                     .bold()
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -64,6 +74,21 @@ struct ContentView: View {
         }
         .onAppear {
             AudioEngine.shared.setupAudioSession()
+            
+            // Start listening for activity changes
+            activityManager.startMonitoring()
+            
+            // React to automatic driving detection
+            activityManager.onDrivingStateChanged = { isDriving in
+                // Only change state if we aren't manually overriding
+                if isDriving && !isTracking {
+                    isTracking = true
+                    speedManager.startTracking(isAuto: true)
+                } else if !isDriving && isTracking {
+                    isTracking = false
+                    speedManager.stopTracking(isManual: false)
+                }
+            }
         }
     }
 }

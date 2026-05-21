@@ -1,42 +1,49 @@
-//
-//  SpeedLimitManager.swift
-//  Speed_Chime
-//
-//  Created by Venkat Allu on 5/21/26.
-//
-
 import Foundation
 import Combine
 
 class SpeedLimitManager: ObservableObject {
     @Published var currentSpeedLimit: Int = 0
     private var timer: Timer?
+    
+    // Added to prevent auto-start from overriding a manual stop
+    var isManuallyStopped: Bool = false
 
-    // Called when the user presses "Start Tracking"
-    func startTracking() {
-        // Generate an initial random speed immediately
-        generateRandomSpeedLimit()
-        
-        // Start a timer to change the limit every 10 seconds
-        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
-            self?.generateRandomSpeedLimit()
+    func startTracking(isAuto: Bool = false) {
+        // If the user manually stopped it, don't let CoreMotion auto-start it
+        if isAuto && isManuallyStopped {
+            print("Auto-start blocked because tracking was manually stopped.")
+            return
         }
-        print("▶️ Tracking Started: Generating mock speeds every 10 seconds.")
+        
+        if timer == nil {
+            generateRandomSpeedLimit()
+            timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+                self?.generateRandomSpeedLimit()
+            }
+            print(isAuto ? "🚗 Auto-Tracking Started." : "▶️ Manual Tracking Started.")
+        }
     }
 
-    // Called when the user presses "Stop Tracking"
-    func stopTracking() {
-        timer?.invalidate() // Stop the timer
+    func stopTracking(isManual: Bool = false) {
+        timer?.invalidate()
         timer = nil
-        currentSpeedLimit = 0 // Reset the display
-        print("⏹ Tracking Stopped.")
+        currentSpeedLimit = 0
+        
+        if isManual {
+            isManuallyStopped = true
+            print("⏹ Manual Tracking Stopped. Auto-start paused.")
+        } else {
+            print("🛑 Auto-Tracking Stopped (No longer driving).")
+        }
     }
 
-    // The temporary mock logic to replace with Mapbox later
+    // Reset the manual override state (e.g., when the user presses start again)
+    func resetManualOverride() {
+        isManuallyStopped = false
+    }
+
     private func generateRandomSpeedLimit() {
         let newLimit = Int.random(in: 35...75)
-        
-        // Foundational rule: If NewSpeedLimit != CurrentSpeedLimit -> Trigger Event
         if newLimit != currentSpeedLimit {
             currentSpeedLimit = newLimit
             triggerEvent()
@@ -44,9 +51,7 @@ class SpeedLimitManager: ObservableObject {
     }
 
     private func triggerEvent() {
-        print("Speed limit changed to \(currentSpeedLimit) mph! Triggering event.")
-        
-        // Pass 'true' for a high chime if the limit is 50 or above
+        print("Speed limit changed to \(currentSpeedLimit) mph!")
         AudioEngine.shared.playChime(isHigh: currentSpeedLimit >= 50)
     }
 }

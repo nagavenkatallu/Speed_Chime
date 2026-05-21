@@ -260,6 +260,7 @@
 				INFOPLIST_FILE = "Speed-Chime-Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SpeedChime needs background location to alert you while driving.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SpeedChime needs your location to check speed limits.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Speed_Chime uses your motion activity to automatically detect when you are driving so it can start speed limit tracking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -297,6 +298,7 @@
 				INFOPLIST_FILE = "Speed-Chime-Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SpeedChime needs background location to alert you while driving.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SpeedChime needs your location to check speed limits.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Speed_Chime uses your motion activity to automatically detect when you are driving so it can start speed limit tracking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
