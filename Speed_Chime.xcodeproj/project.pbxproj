@@ -11,7 +11,6 @@
 		B02239772FBF9979009F91E7 /* MapboxNavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = B02239762FBF9979009F91E7 /* MapboxNavigationCore */; };
 		B02239792FBF9979009F91E7 /* MapboxNavigationUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02239782FBF9979009F91E7 /* MapboxNavigationUIKit */; };
 		B022397B2FBF9979009F91E7 /* _MapboxNavigationLocalization in Frameworks */ = {isa = PBXBuildFile; productRef = B022397A2FBF9979009F91E7 /* _MapboxNavigationLocalization */; };
-		B022397D2FBF9979009F91E7 /* _MapboxNavigationTestKit in Frameworks */ = {isa = PBXBuildFile; productRef = B022397C2FBF9979009F91E7 /* _MapboxNavigationTestKit */; };
 		B022397F2FBF9979009F91E7 /* mapbox-directions-swift in Frameworks */ = {isa = PBXBuildFile; productRef = B022397E2FBF9979009F91E7 /* mapbox-directions-swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 				B02239792FBF9979009F91E7 /* MapboxNavigationUIKit in Frameworks */,
 				B02239772FBF9979009F91E7 /* MapboxNavigationCore in Frameworks */,
 				B02239752FBF9979009F91E7 /* MapboxDirections in Frameworks */,
-				B022397D2FBF9979009F91E7 /* _MapboxNavigationTestKit in Frameworks */,
 				B022397F2FBF9979009F91E7 /* mapbox-directions-swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,7 +90,6 @@
 				B02239762FBF9979009F91E7 /* MapboxNavigationCore */,
 				B02239782FBF9979009F91E7 /* MapboxNavigationUIKit */,
 				B022397A2FBF9979009F91E7 /* _MapboxNavigationLocalization */,
-				B022397C2FBF9979009F91E7 /* _MapboxNavigationTestKit */,
 				B022397E2FBF9979009F91E7 /* mapbox-directions-swift */,
 			);
 			productName = Speed_Chime;
@@ -408,11 +405,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
 			productName = _MapboxNavigationLocalization;
-		};
-		B022397C2FBF9979009F91E7 /* _MapboxNavigationTestKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B02239732FBF9979009F91E7 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
-			productName = _MapboxNavigationTestKit;
 		};
 		B022397E2FBF9979009F91E7 /* mapbox-directions-swift */ = {
 			isa = XCSwiftPackageProductDependency;

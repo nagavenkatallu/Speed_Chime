@@ -30,6 +30,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         let speedInMPH = max(location.speed * 2.23694, 0)
         currentSpeed = speedInMPH
         
-        print("Current Speed (from GPX Simulator): \(Int(currentSpeed)) mph")
+//        print("Current Speed (from GPX Simulator): \(Int(currentSpeed)) mph")
     }
 }
